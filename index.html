@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Hard Slideshow</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .quote-container {
+            font-size: 2em;
+            font-weight: bold;
+            max-width: 80%;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container" id="quote">Stay Hard.</div>
+
+    <script>
+        const quotes = [
+            "Stay hard. Or stay home.",
+            "Pain is just weakness leaving the body. But in your case, it might be a lawsuit.",
+            "They don’t know me, son! But after this PowerPoint, they will.",
+            "Motivation is fleeting. That’s why I put this slideshow on repeat.",
+            "You don’t stop when you’re tired. You stop when this presentation ends... which it doesn’t.",
+            "Suffering is a choice. And I chose for you.",
+            "IDGAF what OT is!",
+            "Embrace the suck. Or I’ll embrace it for you.",
+            "The only easy day was yesterday. And even that was questionable.",
+            "Call me crazy, but at least I’m not soft.",
+            "If you’re waiting for inspiration, go home. This slideshow isn’t for you."
+        ];
+
+        let index = 0;
+        function changeQuote() {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % quotes.length;
+                quoteElement.innerHTML = quotes[index];
+                quoteElement.style.opacity = 1;
+            }, 1000);
+        }
+        setInterval(changeQuote, 3000);
+    </script>
+</body>
+</html>
