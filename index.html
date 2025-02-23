@@ -14,6 +14,7 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            flex-direction: column;
         }
         .quote-container {
             font-size: 2em;
@@ -21,10 +22,17 @@
             max-width: 80%;
             transition: opacity 1s ease-in-out;
         }
+        .image-container img {
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+            transition: opacity 1s ease-in-out;
+        }
     </style>
 </head>
 <body>
     <div class="quote-container" id="quote">Stay Hard.</div>
+    <div class="image-container" id="image"></div>
 
     <script>
         const quotes = [
@@ -32,23 +40,36 @@
             "Pain is just weakness leaving the body. But in your case, it might be a lawsuit.",
             "They don’t know me, son! But after this PowerPoint, they will.",
             "Motivation is fleeting. That’s why I put this slideshow on repeat.",
+            "That meeting could have been an email.",
+            "Who is going to carry the boats? Your mom?",
             "You don’t stop when you’re tired. You stop when this presentation ends... which it doesn’t.",
             "Suffering is a choice. And I chose for you.",
-            "IDGAF what OT is!",
             "Embrace the suck. Or I’ll embrace it for you.",
+            "IDGAF what OT is!",
             "The only easy day was yesterday. And even that was questionable.",
             "Call me crazy, but at least I’m not soft.",
             "If you’re waiting for inspiration, go home. This slideshow isn’t for you."
         ];
-
+        
+        const images = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3F9iby1HmJDQ5FlkKx3tuqi_iq1RbmcyWqA&s",
+    "https://media.licdn.com/dms/image/v2/D5622AQEZw0Q93orMYw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1693000766031?e=2147483647&v=beta&t=rnf9I5Cp6RnnysFpc7IjjxJGCZ8B-oX1jQlkJF1i8cc",
+    "https://i.ytimg.com/vi/krFnXdAX_nk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC_Mi2nVXQQ0y-ceSzAL10RHh0NsQ",
+    "https://philsalwasser.com/img/profile.jpg"
+];
+        
         let index = 0;
         function changeQuote() {
             const quoteElement = document.getElementById('quote');
+            const imageElement = document.getElementById('image');
             quoteElement.style.opacity = 0;
+            imageElement.style.opacity = 0;
             setTimeout(() => {
                 index = (index + 1) % quotes.length;
                 quoteElement.innerHTML = quotes[index];
+                imageElement.innerHTML = `<img src="${images[Math.floor(Math.random() * images.length)]}" alt="Motivation">`;
                 quoteElement.style.opacity = 1;
+                imageElement.style.opacity = 1;
             }, 1000);
         }
         setInterval(changeQuote, 5000);
