@@ -1,79 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stay Hard Slideshow</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            flex-direction: column;
-        }
-        .quote-container {
-            font-size: 2em;
-            font-weight: bold;
-            max-width: 80%;
-            transition: opacity 1s ease-in-out;
-        }
-        .image-container img {
-            max-width: 300px;
-            height: auto;
-            margin-top: 20px;
-            transition: opacity 1s ease-in-out;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Jocko Slideshow</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
+      color: white;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      max-width: 300px;
+      height: auto;
+      border: 4px solid #d4af37;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
+    }
+    .quote {
+      font-size: 1.6em;
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+    .bio {
+      font-size: 1em;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-    <div class="quote-container" id="quote">Stay Hard.</div>
-    <div class="image-container" id="image"></div>
+  <img id="photo" src="" alt="Civil War Soldier">
+  <div class="quote" id="quote">"Discipline equals bayonets."</div>
+  <div class="bio" id="bio">Lt. Amos Wadsworth – Known for charging into battle while yelling “Cover me, I’m reloading!”</div>
 
-    <script>
-        const quotes = [
-            "Stay hard. Or stay home.",
-            "i'm their leader not their mom",
-            "Pain is just weakness leaving the body. But in your case, it might be a lawsuit.",
-            "They don’t know me, son! But after this PowerPoint, they will.",
-            "Motivation is fleeting. That’s why I put this slideshow on repeat.",
-            "That meeting could have been an email.",
-            "Who is going to carry the boats? Your mom?",
-            "You don’t stop when you’re tired. You stop when this presentation ends... which it doesn’t.",
-            "Suffering is a choice. And I chose for you.",
-            "Embrace the suck. Or I’ll embrace it for you.",
-            "IDGAF what OT is!",
-            "The only easy day was yesterday. And even that was questionable.",
-            "Call me crazy, but at least I’m not soft.",
-            "If you’re waiting for inspiration, go home. This slideshow isn’t for you."
-        ];
-        
-        const images = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3F9iby1HmJDQ5FlkKx3tuqi_iq1RbmcyWqA&s",
-    "https://media.licdn.com/dms/image/v2/D5622AQEZw0Q93orMYw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1693000766031?e=2147483647&v=beta&t=rnf9I5Cp6RnnysFpc7IjjxJGCZ8B-oX1jQlkJF1i8cc",
-    "https://i.ytimg.com/vi/krFnXdAX_nk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC_Mi2nVXQQ0y-ceSzAL10RHh0NsQ",
-    "https://philsalwasser.com/img/profile.jpg"
-];
-        
-        let index = 0;
-        function changeQuote() {
-            const quoteElement = document.getElementById('quote');
-            const imageElement = document.getElementById('image');
-            quoteElement.style.opacity = 0;
-            imageElement.style.opacity = 0;
-            setTimeout(() => {
-                index = (index + 1) % quotes.length;
-                quoteElement.innerHTML = quotes[index];
-                imageElement.innerHTML = `<img src="${images[Math.floor(Math.random() * images.length)]}" alt="Motivation">`;
-                quoteElement.style.opacity = 1;
-                imageElement.style.opacity = 1;
-            }, 1000);
-        }
-        setInterval(changeQuote, 5000);
-    </script>
+  <script>
+    const slides = [
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/13/Union_soldier_Civil_War.jpg",
+        quote: "Discipline equals bayonets.",
+        bio: "Lt. Amos Wadsworth – Known for charging into battle while yelling 'Cover me, I’m reloading!'"
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Confederate_soldier_in_uniform.jpg",
+        quote: "Default aggressive. With a musket.",
+        bio: "Sgt. Ezekiel Boone – Held the line with nothing but grit and a very loud mustache."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Civil_War_Soldier_in_uniform_with_flag.jpg",
+        quote: "There are no bad days. Just days with cannon fire.",
+        bio: "Private Silas McGraw – Took a cannonball to the morale and kept marching."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Union_soldier_with_musket.jpg",
+        quote: "Extreme ownership starts with extreme wool coats.",
+        bio: "Captain Horace ‘No Excuses’ Blake – Wrote a 47-page letter of accountability after Pickett’s Charge."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Civil_War_Union_soldier_with_rifle.jpg",
+        quote: "If you're not early to the battlefield, you're already late to the surrender.",
+        bio: "Corporal Jedidiah Flint – Once woke up before Reveille just to win the war in his sleep."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Civil_War_Confederate_Soldier_in_uniform.jpg",
+        quote: "Get after it. Even if 'it' is trench foot.",
+        bio: "Private Rufus T. Granger – Survived three charges, two duels, and one particularly bad stew."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Civil_War_Union_Soldier_portrait.jpg",
+        quote: "Mission first. Beards second. Feelings never.",
+        bio: "Major Levi Hammersmith – Wrote his own war journal in bullet points and blood."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/12/Civil_War_soldier_with_sword.jpg",
+        quote: "Excuses are like horses: if you feed them, they’ll carry you nowhere.",
+        bio: "Lt. Cornelius ‘Zero Excuses’ Pratt – Fought the Battle of Cold Harbor barefoot just to prove a point."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/2/29/Confederate_soldier_with_pistol.jpg",
+        quote: "The grind doesn’t stop at Gettysburg. Neither did he.",
+        bio: "Ensign Clyde R. Deeds – Took two naps in a foxhole and called them tactical resets."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Union_Soldier_in_Uniform_Standing.jpg",
+        quote: "Own the terrain. Even if it’s mud.",
+        bio: "General Walter Burnside – Took ‘extreme ownership’ of a failed charge and re-enacted it better the next day."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/59/Civil_War_Soldier_standing_in_uniform.jpg",
+        quote: "No plan survives contact with the enemy—unless it’s my plan.",
+        bio: "Colonel Zebulon Pike Jr. – Carved strategy into a tree during a thunderstorm, then followed it exactly."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Civil_War_soldier_in_camp.jpg",
+        quote: "Victory loves preparation. And hardtack.",
+        bio: "Private Elijah 'Iron Belly' Crow – Survived 7 battles and 812 rations of flavorless crackers."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Union_Army_soldier_posed.jpg",
+        quote: "The fog of war is just another obstacle. So clear it with vision.",
+        bio: "Sgt. Montgomery Vail – Saw the enemy three miles away. With one good eye. At night."
+      },
+      {
+        image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Civil_War_Soldier_full_body.jpg",
+        quote: "If the sun's up, you're late. If the moon's up, you're still late.",
+        bio: "Captain Ulysses Brick – Never used a clock. He just listened to the thunder of cannons."
+      }
+    ];
+
+    let index = 0;
+    function updateSlide() {
+      const slide = slides[index];
+      document.getElementById('photo').src = slide.image;
+      document.getElementById('quote').innerText = '"' + slide.quote + '"';
+      document.getElementById('bio').innerText = slide.bio;
+      index = (index + 1) % slides.length;
+    }
+
+    updateSlide();
+    setInterval(updateSlide, 6000);
+  </script>
 </body>
 </html>
