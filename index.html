@@ -16,6 +16,7 @@
       height: 100vh;
       text-align: center;
       padding: 20px;
+      overflow: hidden;
     }
     img {
       max-width: 300px;
@@ -24,50 +25,119 @@
       border-radius: 12px;
       margin-bottom: 20px;
       box-shadow: 0 0 12px rgba(255,255,255,0.2);
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
     }
     .quote {
       font-size: 1.6em;
       font-style: italic;
       margin-bottom: 10px;
       color: #ffcc00;
+      transition: opacity 1s ease-in-out;
     }
     .bio {
       font-size: 1em;
       color: #ccc;
+      transition: opacity 1s ease-in-out;
+    }
+    .fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .fade-in {
+      opacity: 1;
+      transform: scale(1);
     }
   </style>
 </head>
 <body>
-  <img id="photo" src="" alt="Civil War Soldier">
-  <div class="quote" id="quote">"Discipline equals bayonets."</div>
-  <div class="bio" id="bio">Lt. Amos Wadsworth – Known for charging into battle while yelling “Cover me, I’m reloading!”</div>
+  <img id="photo" src="" alt="Civil War Leader" class="fade-in">
+  <div class="quote fade-in" id="quote">"Discipline equals bayonets."</div>
+  <div class="bio fade-in" id="bio">Lt. Amos Wadsworth – Known for charging into battle while yelling “Cover me, I’m reloading!”</div>
 
   <script>
     const slides = [
       {
-        image: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Unidentified_soldier_in_Union_uniform.jpg",
-        quote: "Lead from the front. Reload from the back.",
-        bio: "Private Orville K. Boone – Fired his musket with honor, and occasionally aim."
+        image: "https://tse4.mm.bing.net/th?id=OIP.s6QCFpcuLNXiJQOcwfanMgHaJW&pid=Api",
+        quote: "I am a firm believer in the people.",
+        bio: "Abraham Lincoln – Led the United States through its Civil War and abolished slavery."
       },
       {
-        image: "https://upload.wikimedia.org/wikipedia/commons/1/17/Union_soldier_with_rifle_and_bayonet.jpg",
-        quote: "No boots? No problem. Just improvise with grit.",
-        bio: "Cpl. Milo G. Graves – Invented the barefoot bayonet technique (not recommended)."
+        image: "https://tse4.mm.bing.net/th?id=OIP.zqAM3vGkysWSo2sq5gZEVQHaJM&pid=Api",
+        quote: "The art of war is simple enough.",
+        bio: "General Beauregard – Confederate general known for the attack on Fort Sumter."
       },
       {
-        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Unidentified_soldier_in_Confederate_uniform.jpg",
-        quote: "When the going gets tough, the tough get wool uniforms.",
-        bio: "Lt. Gerald Beauregard – Fought heatstroke and the enemy simultaneously."
+        image: "https://tse3.mm.bing.net/th?id=OIP.-SPWxEHT66cPLwY1_93hEQHaI-&pid=Api",
+        quote: "Take the initiative, hold the high ground.",
+        bio: "George G. Meade – Commanded Union forces at the Battle of Gettysburg."
+      },
+      {
+        image: "https://tse1.mm.bing.net/th?id=OIP.iv3oj4qVaYRAv0dvh5kAdAHaI_&pid=Api",
+        quote: "Outflank. Outlast. Outcharge.",
+        bio: "Stonewall Jackson – Famous for standing like a stone wall at First Bull Run."
+      },
+      {
+        image: "https://tse1.mm.bing.net/th?id=OIP.Gfjs0mcDf8vvQ4ZcYDh5pgHaJU&pid=Api",
+        quote: "Move fast. Fix bayonets. Win.",
+        bio: "William Tecumseh Sherman – Union general who marched to the sea with relentless momentum."
+      },
+      {
+        image: "https://tse3.mm.bing.net/th?id=OIP.Dg7DOtSfjqWfrLxQPV6pOwHaJQ&pid=Api",
+        quote: "Fortitude isn't optional—it’s mandatory.",
+        bio: "Jefferson Davis – President of the Confederate States with a firm jawline and firmer resolve."
+      },
+      {
+        image: "https://tse4.mm.bing.net/th?id=OIP.nf6z6GHErPweOQFQ6JmV4QHaKf&pid=Api",
+        quote: "Discipline your fear before it disciplines you.",
+        bio: "Ambrose Burnside – The man, the myth, the sideburns."
+      },
+      {
+        image: "https://tse3.mm.bing.net/th?id=OIP.M_-BuEuqjZhGc8o1U0X9lQHaLH&pid=Api",
+        quote: "Aggression. Initiative. Side-eye from a saddle.",
+        bio: "J.E.B. Stuart – Cavalry commander who rode circles around the Union—literally."
+      },
+      {
+        image: "https://tse4.mm.bing.net/th?id=OIP.Z9xRMnldA9v8iAo26FV3aAHaKp&pid=Api",
+        quote: "Obstacles are just targets for innovation.",
+        bio: "Winfield Scott – Carried more strategy than snacks, and that’s saying something."
+      },
+      {
+        image: "https://tse1.mm.bing.net/th?id=OIP._a9wbpJzhhTf__8utAP62AHaLH&pid=Api",
+        quote: "Lead like you’re on fire. Because your camp might be.",
+        bio: "Nathan Bedford Forrest – Bold, unpredictable, and allergic to retreat."
       }
     ];
 
     let index = 0;
     function updateSlide() {
-      const slide = slides[index];
-      document.getElementById('photo').src = slide.image;
-      document.getElementById('quote').innerText = '"' + slide.quote + '"';
-      document.getElementById('bio').innerText = slide.bio;
-      index = (index + 1) % slides.length;
+      const photo = document.getElementById('photo');
+      const quote = document.getElementById('quote');
+      const bio = document.getElementById('bio');
+
+      photo.classList.remove('fade-in');
+      quote.classList.remove('fade-in');
+      bio.classList.remove('fade-in');
+
+      photo.classList.add('fade-out');
+      quote.classList.add('fade-out');
+      bio.classList.add('fade-out');
+
+      setTimeout(() => {
+        const slide = slides[index];
+        photo.src = slide.image;
+        quote.innerText = '"' + slide.quote + '"';
+        bio.innerText = slide.bio;
+
+        photo.classList.remove('fade-out');
+        quote.classList.remove('fade-out');
+        bio.classList.remove('fade-out');
+
+        photo.classList.add('fade-in');
+        quote.classList.add('fade-in');
+        bio.classList.add('fade-in');
+
+        index = (index + 1) % slides.length;
+      }, 1000);
     }
 
     updateSlide();
